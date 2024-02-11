@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="content-page container align-items-center mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="reg-form p-4 shadow">
+                {% csrf_token %}
+                <h2 class="text-center text-white mb-4">Registration</h2>
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="text-white">Username</label><br>
+                    {{ form.username }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}" class="text-white">Email</label><br>
+                    {{ form.email }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}" class="text-white">Password</label><br>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}" class="text-white">Confirm Password</label><br>
+                    {{ form.password2 }}
+                </div>
+
+                <button type="submit" class="btn btn-light btn-block mt-3">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container mt-4">
+    <div class="row justify-content-between">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark-subtle border-0 rounded">
+                <img src="{{ course.img.url }}" class="card-img-top rounded" alt="{{ course.title }}">
+                <div class="card-body bg-dark-subtle">
+                    <h5 class="card-title text-center text-dark mb-0"><a href="{% url 'course_detail' course.id %}" class="text-dark">{{ course.title }}</a></h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

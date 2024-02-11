@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container-fluid bg-dark">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ course.img.url }}" class="img-fluid rounded" alt="{{ course.title }}">
+        </div>
+        <div class="col-md-8 text-white">
+            <h1 class="display-4">{{ course.title }}</h1>
+            <p class="lead">{{ course.desc }}</p>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <h2 class="text-white">Add comment</h2>
+    <form method="post" class="comment-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-light">Add comment</button>
+    </form>
+</div>
+<div class="container mt-4">
+    <h2 class="text-white">Comments</h2>
+    <div class="text-white">
+        {% for c in comments %}
+        <div class="card bg-light my-2">
+            <div class="card-body">
+                <p class="card-text">{{ c.text }}</p>
+                <p class="card-text"><b>Author:</b> {{ c.user.username }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
